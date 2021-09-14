@@ -1,0 +1,15 @@
+
+import numpy as np
+import pandas as pd
+import re
+
+allsales = pd.read_csv (r"C:\Users\dludwinski\Desktop\wip\NVPSaugust2021allsales.csv")
+allsales.insert(0, "Active", "") 
+allsales = allsales.loc[allsales["ResponseCode"].str.contains("MK") == True]
+allsales = allsales.loc[~allsales["ResponseCode"].str.contains("AAA") == True]
+allsales = allsales.reset_index(drop=True)
+
+
+#allsales = allsales.groupby("FinanceStatus").count()
+
+print(allsales.head)
